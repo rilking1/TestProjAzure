@@ -1,4 +1,12 @@
+using Microsoft.EntityFrameworkCore;
+using TestProjAzure.Models;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<DBAzuraContext>(options =>
+{
+    options.UseSqlServer(builder.Configuration.GetConnectionString("Database"));
+});
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
